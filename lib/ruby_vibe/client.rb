@@ -21,7 +21,7 @@ class RubyVibe
       response = ::RestClient::Request.execute(
         method:     http_method, 
         url:        url,
-        payload:    payload, 
+        payload:    payload.to_json, 
         headers:    headers,
         timeout:    5, 
         verify_ssl: ::OpenSSL::SSL::VERIFY_NONE

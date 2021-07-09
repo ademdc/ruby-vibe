@@ -10,10 +10,12 @@ class RubyVibe
   end
 
   class Configuration
-    attr_accessor :auth_token
+    attr_accessor :auth_token, :sender_name, :sender_avatar
 
     def initialize
-      @auth_token = nil
+      @auth_token    = nil
+      @sender_name   = nil
+      @sender_avatar = 'http://avatar.example.com'
     end
   end
 end
