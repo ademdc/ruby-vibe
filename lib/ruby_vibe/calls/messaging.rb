@@ -2,10 +2,9 @@ class RubyVibe
   module Calls
     module Messaging
 
-      def send_message(receiver:, text:, sender_name: nil, sender_avatar: nil, tracking_data: nil, type: 'text')
+      def send_message(receiver:, text:, sender_name: nil, sender_avatar: nil, tracking_data: nil, type: 'text', keyboard: nil)
         payload = {
           receiver:receiver,
-          min_api_version:1,
           sender:{
              name:sender_name || RubyVibe.config.sender_name,
              avatar:sender_avatar || RubyVibe.config.sender_avatar
@@ -15,9 +14,26 @@ class RubyVibe
           text:text
         }.compact
 
-        puts payload
+        payload.merge!({ keyboard: keyboard }) unless keyboard.nil?
 
         client.action(RubyVibe::URLS::MESSAGE, payload: payload)
+      end
+
+      def broadcast_message(broadcast_list:[], text:, sender_name: nil, sender_avatar: nil, type: 'text', rich_media: nil, keyboard: nil)
+        payload = {
+          sender:{
+             name: sender_name || RubyVibe.config.sender_name,
+             avatar: sender_avatar || RubyVibe.config.sender_avatar
+          },
+         type: type,
+          text: text,
+          broadcast_list: broadcast_list,
+        }
+
+        payload.merge!({ rich_media: rich_media }) unless rich_media.nil?
+        payload.merge!({ keyboard: keyboard }) unless keyboard.nil?
+
+        client.action(RubyVibe::URLS::BROADCAST_MESSAGE, payload: payload)
       end
     end
   end
