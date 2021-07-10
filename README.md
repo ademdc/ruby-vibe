@@ -6,7 +6,7 @@ Simple Ruby client for Viber REST API
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'ruby_vibe', '~> 0.0.1'
+gem 'ruby_vibe', '~> 0.0.1', require: 'ruby_vibe'
 ```
 
 ...followed with:

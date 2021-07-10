@@ -3,19 +3,19 @@ require 'json'
 
 class RubyVibe
   class Client
-
+    
     attr_accessor :token
 
     def initialize(auth_token:) 
       RubyVibe.configure
 
-      @token = auth_token 
+      @token = auth_token || RubyVibe.config.auth_token
     end
 
     def action(url, payload: {}, http_method: :post)
       headers = {
         'User-Agent': "RubyVibe client v#{RubyVibe::VERSION})",
-        'X-Viber-Auth-Token': token || RubyVibe.config.auth_token
+        'X-Viber-Auth-Token': token 
       }
 
       response = ::RestClient::Request.execute(
