@@ -8,6 +8,8 @@ Gem::Specification.new do |spec|
   spec.version       = RubyVibe::VERSION
   spec.authors       = ['Adem Dinarevic']
   spec.email         = ['ademdinarevic@gmail.com']
+  spec.homepage      = 'https://github.com/ademdc/ruby-vibe'
+  spec.license       = 'MIT'
 
   spec.summary       = "Ruby client for Viber API"
   spec.description   = "Ruby client for Viber API"

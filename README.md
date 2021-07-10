@@ -52,6 +52,8 @@ See list of possible events on: `https://developers.viber.com/docs/api/rest-bot-
 viber.send_message(receiver: '<RECEIVER_ID>', text: 'Hello from RubyVibe!', sender_name: 'Sender', sender_avatar: 'http://avatar.example.com', tracking_data: 'tracking data')
 ```
 
+Add a `keyboard` parameter to the call to send predefined text keyboard to the user. More about it on `https://developers.viber.com/docs/tools/keyboards/`
+
 ### Broadcast a message
 ```
 viber.broadcast_message(broadcast_list:['<USER_ID>'], text: 'Hi from RubyVibe!', sender_name: 'RubyVibe', sender_avatar: 'http://avatar.example.com', type: 'text')
