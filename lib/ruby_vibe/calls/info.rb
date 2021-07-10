@@ -16,6 +16,22 @@ class RubyVibe
 
         client.action(RubyVibe::URLS::SET_WEBHOOK, payload: payload)
       end
+
+      def get_user_details(user_id)
+        payload = {
+          id: user_id
+        }
+
+        client.action(RubyVibe::URLS::GET_USER_DETAILS, payload: payload)
+      end
+
+      def get_online(ids=[])
+        payload = {
+          ids: ids
+        }
+        
+        client.action(RubyVibe::URLS::GET_ONLINE, payload: payload)
+      end
     end
   end
 end
