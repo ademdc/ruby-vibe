@@ -1,8 +1,8 @@
-require 'ruby_vibe/client'
-require 'ruby_vibe/calls'
-require 'ruby_vibe/version'
-require 'ruby_vibe/configuration'
-require 'ruby_vibe/urls'
+require 'ruby-vibe/client'
+require 'ruby-vibe/calls'
+require 'ruby-vibe/version'
+require 'ruby-vibe/configuration'
+require 'ruby-vibe/urls'
 
 class RubyVibe
 

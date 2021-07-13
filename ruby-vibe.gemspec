@@ -1,4 +1,4 @@
-require_relative 'lib/ruby_vibe/version'
+require_relative 'lib/ruby-vibe/version'
 
 Gem::Specification.new do |spec|
   spec.name          = 'ruby-vibe'
@@ -12,14 +12,14 @@ Gem::Specification.new do |spec|
   spec.require_paths = ['lib']
   
   spec.files         =  %w[
-    lib/ruby_vibe.rb
-    lib/ruby_vibe/client.rb
-    lib/ruby_vibe/calls.rb
-    lib/ruby_vibe/version.rb
-    lib/ruby_vibe/configuration.rb
-    lib/ruby_vibe/urls.rb
-    lib/ruby_vibe/calls/info.rb
-    lib/ruby_vibe/calls/messaging.rb
+    lib/ruby-vibe.rb
+    lib/ruby-vibe/client.rb
+    lib/ruby-vibe/calls.rb
+    lib/ruby-vibe/version.rb
+    lib/ruby-vibe/configuration.rb
+    lib/ruby-vibe/urls.rb
+    lib/ruby-vibe/calls/info.rb
+    lib/ruby-vibe/calls/messaging.rb
   ]
 
   spec.add_development_dependency 'bundler', '2.1.4'

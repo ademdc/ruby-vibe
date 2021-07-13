@@ -1,7 +1,7 @@
 #!/usr/bin/env ruby
 
 require 'bundler/setup'
-require './lib/ruby_vibe'
+require './lib/ruby-vibe'
 
 # require "pry"
 # Pry.start

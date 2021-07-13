@@ -1,5 +1,5 @@
-require 'ruby_vibe/calls/info'
-require 'ruby_vibe/calls/messaging'
+require 'ruby-vibe/calls/info'
+require 'ruby-vibe/calls/messaging'
 
 class RubyVibe
   module Calls 
