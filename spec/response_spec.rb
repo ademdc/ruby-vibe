@@ -16,7 +16,7 @@ RSpec.describe RubyVibe::Response do
     expect(RubyVibe::Response.parse(fail_response).success?).to be false
   end
 
-  it 'show errro message when success? == false' do
+  it 'show error message when success? == false' do
     expect(RubyVibe::Response.parse(fail_response).error_message).not_to be nil
   end
 end

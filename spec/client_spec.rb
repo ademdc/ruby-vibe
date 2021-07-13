@@ -17,4 +17,9 @@ RSpec.describe RubyVibe::Client do
     expect(viber.get_account_data.success?).to be false
   end
 
+  it 'expects hash to exist in reponse' do
+    viber = RubyVibe.new(auth_token: token)
+    expect(viber.get_account_data.hash).to be_a Hash
+  end
+
 end

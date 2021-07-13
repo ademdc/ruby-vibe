@@ -24,7 +24,7 @@ class RubyVibe
         error_message =  hash.dig('status_message')
       end
      
-      Struct.new(:success?, :se, :error_message).new(success, hash, error_message)
+      Struct.new(:success?, :hash, :error_message).new(success, hash, error_message)
     end
   end
 end
