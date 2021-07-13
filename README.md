@@ -1,22 +1,22 @@
 # ruby-vibe
-Simple Ruby client for Viber REST API
+Ruby client for Viber REST API
 
 
 ## Installation
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'ruby_vibe', '~> 0.0.2', require: 'ruby_vibe'
+gem 'ruby-vibe', '1.0.0', require: 'ruby-vibe'
 ```
 
 ...followed with:
 ```
-$ bundle install
+bundle install
 ```
 
 Or install it with:
 ```
-$ gem install ruby_vibe
+gem install ruby-vibe
 ```
 
 ## Usage
@@ -24,7 +24,7 @@ $ gem install ruby_vibe
 viber = RubyVibe.new(auth_token: <YOUR_AUTH_TOKEN>)
 ```
 
-Also, it is possible to add a `ruby_vibe.rb` file in in the initializers folder with the following content:
+Also, it is possible to add a `ruby-vibe.rb` file in in the initializers folder with the following content:
 
 ```
 RubyVibe.configure do |config|
@@ -39,6 +39,15 @@ In this case the client can be initialized without any params: `viber = RubyVibe
 ### Get account data
 ```
 viber.get_account_data
+```
+
+### Response
+The reponse of each method is a `Struct` with three keys: `success?`, `hash` and `error_message`. \
+
+For a send message request the response could look like this: 
+
+```
+#<struct :success?=true, hash={"status"=>0, "status_message"=>"ok", "message_token"=>5595771666503728439, "chat_hostname"=>"SN-CHAT-16_"}, error_message=nil> 
 ```
 
 ### Set a webhook
@@ -69,6 +78,6 @@ viber.get_user_details('<USER_ID>')
 viber.get_online(['<USER_ID>', '<ANOTHER_USER_ID>])
 ```
 
-##### Thank you for using RubyVibe!
+## Thank you for using RubyVibe!
 
 
