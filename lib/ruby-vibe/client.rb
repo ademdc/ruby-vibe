@@ -27,24 +27,7 @@ class RubyVibe
         verify_ssl: ::OpenSSL::SSL::VERIFY_NONE
       )
       
-      return_response(response)
+      RubyVibe::Response.parse(response)
     end
-
-    private
-
-    def return_response(response)
-      success       = true
-      error_message = nil
-      hash          = JSON.parse(response.body)
-
-      unless hash.dig('status').to_i == 0
-        success = false 
-        error_message =  hash.dig('status_message')
-      end
-     
-
-      Struct.new(:success?, :hash, :error_message).new(success, hash, error_message)
-    end
-
   end
 end

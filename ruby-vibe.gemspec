@@ -18,6 +18,7 @@ Gem::Specification.new do |spec|
     lib/ruby-vibe/version.rb
     lib/ruby-vibe/configuration.rb
     lib/ruby-vibe/urls.rb
+    lib/ruby-vibe/response.rb
     lib/ruby-vibe/calls/info.rb
     lib/ruby-vibe/calls/messaging.rb
   ]

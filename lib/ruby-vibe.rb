@@ -3,6 +3,7 @@ require 'ruby-vibe/calls'
 require 'ruby-vibe/version'
 require 'ruby-vibe/configuration'
 require 'ruby-vibe/urls'
+require 'ruby-vibe/response'
 
 class RubyVibe
 
