@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    ruby-vibe (1.0.0)
+    ruby-vibe (1.0.1)
       rest-client (~> 2.0)
 
 GEM
