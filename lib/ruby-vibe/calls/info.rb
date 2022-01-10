@@ -25,9 +25,9 @@ class RubyVibe
         client.action(RubyVibe::URLS::GET_USER_DETAILS, payload: payload)
       end
 
-      def get_online(ids=[])
+      def get_online(*ids)
         payload = {
-          ids: ids
+          ids: Array(ids)
         }
         
         client.action(RubyVibe::URLS::GET_ONLINE, payload: payload)

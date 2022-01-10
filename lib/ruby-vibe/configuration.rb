@@ -1,12 +1,14 @@
 class RubyVibe
+
   class << self
+
     # Accessor for global configuration.
     attr_accessor :config
-  end
 
-  def self.configure
-    self.config ||= Configuration.new
-    yield(config) if block_given?
+    def configure
+      self.config ||= Configuration.new
+      yield(config) if block_given?
+    end
   end
 
   class Configuration
