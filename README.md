@@ -77,7 +77,7 @@ viber.get_user_details('<USER_ID>')
 ```ruby
 viber.get_online( 'USER_ID', 'ANOTHER_USER_ID' )
 # or
-viber.get_online(['<USER_ID>', '<ANOTHER_USER_ID>])
+viber.get_online(['<USER_ID>', '<ANOTHER_USER_ID>'])
 ```
 
 ## Thank you for using RubyVibe!
