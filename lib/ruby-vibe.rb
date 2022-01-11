@@ -38,12 +38,12 @@ class RubyVibe < Client
 
 
   def get_user_details(user_id)
-    viberize(URL::GET_USER_DETAILS, user_id)
+    viberize(URL::GET_USER_DETAILS, id: user_id, info: true)
   end
 
 
   def get_online(*user_ids)
-    viberize(URL::GET_ONLINE, ids: Array(user_ids))
+    viberize(URL::GET_ONLINE, ids: Array(user_ids), info: true)
   end
 
 end
