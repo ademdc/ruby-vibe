@@ -1,6 +1,6 @@
 # This is development branch
 
-Please go to https://github.com/ademdc/ruby-vibe 
+Please go to https://github.com/ademdc/ruby-vibe   
 This branch is under active development, not ready to use!
 
 # ruby-vibe
