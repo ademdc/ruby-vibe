@@ -14,16 +14,14 @@ Gem::Specification.new do |spec|
   spec.files         =  %w[
     lib/ruby-vibe.rb
     lib/ruby-vibe/client.rb
-    lib/ruby-vibe/calls.rb
     lib/ruby-vibe/version.rb
-    lib/ruby-vibe/configuration.rb
-    lib/ruby-vibe/urls.rb
-    lib/ruby-vibe/response.rb
-    lib/ruby-vibe/calls/info.rb
-    lib/ruby-vibe/calls/messaging.rb
+    lib/ruby-vibe/url.rb
   ]
 
-  spec.required_ruby_version = '>= 2.3'
+  spec.bindir = ['bin']
+  spec.require_paths = ['lib']
+
+  spec.required_ruby_version = '>= 2.6'
 
   spec.add_development_dependency 'rspec', '~> 3.0'
   spec.add_dependency 'rest-client', '~> 2.0'

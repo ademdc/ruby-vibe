@@ -1,3 +1,19 @@
+# Update January 11, 2021 - 11:40
+==================================
+
+**Developer(s): Alx3Dev**
+
+Info:
+
+ - Refactored source code with breaking changes
+ - User commands are still same (or almost same)
+ - Now we have `client.rb` class that run connection to viber api
+ - And `ruby-vibe.rb` that send commands to viber over `client.rb`
+ - NOT-TESTED !
+ - TO-DO: Tests and Documentation
+
+
+
 # Update January 10, 2021 - 16:51
 ==================================
 
