@@ -39,7 +39,7 @@ module ACTION
 
   class Get_Online
     def self.[]( *user_ids )
-      viberize(URL::GET_ONLINE, ids: Array(user_ids), info: true )
+      Client.new.viberize(URL::GET_ONLINE, ids: Array(user_ids), info: true )
     end
   end
 

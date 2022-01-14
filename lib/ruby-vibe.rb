@@ -13,11 +13,9 @@ class RubyVibe < Client
 
   include ACTION
 
-  TOKEN, NAME, AVATAR = '', '', '' 
 
-
-  def initialize( auth_token = TOKEN, name = NAME, avatar = AVATAR )
-    super(auth_token, name, avatar)
+  def initialize( auth_token: nil, sender: nil, avatar = nil )
+    super(auth_token: auth_token, sender: sender, avatar: avatar)
   end
 
 

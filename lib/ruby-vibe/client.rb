@@ -9,13 +9,17 @@ require 'json'
 
 class Client
 
-  attr_accessor :token, :name, :avatar, :response
+  attr_accessor :token, :sender, :avatar, :response
 
   TOKEN  = ''
   SENDER = ''
   AVATAR = ''
   
-  def initialize( auth_token = TOKEN, sender = SENDER, avatar = AVATAR )
+  def initialize( auth_token: nil, sender: SENDER, avatar: AVATAR )
+
+    auth_token ||= TOKEN
+    sender     ||= SENDER
+    avatar     ||= AVATAR
 
     raise 'Token must be string!' unless auth_token.is_a? String
     raise 'Sender name must be string' unless sender.is_a? String
