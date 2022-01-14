@@ -11,8 +11,11 @@ class Client
 
   attr_accessor :token, :name, :avatar, :response
 
-
-  def initialize( auth_token, sender, avatar = '' )
+  TOKEN  = ''
+  SENDER = ''
+  AVATAR = ''
+  
+  def initialize( auth_token = TOKEN, sender = SENDER, avatar = AVATAR )
 
     raise 'Token must be string!' unless auth_token.is_a? String
     raise 'Sender name must be string' unless sender.is_a? String
