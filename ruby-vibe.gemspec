@@ -16,6 +16,7 @@ Gem::Specification.new do |spec|
     lib/ruby-vibe/client.rb
     lib/ruby-vibe/version.rb
     lib/ruby-vibe/url.rb
+    lib/ruby-vibe/action.rb
   ]
 
   spec.bindir = ['bin']
