@@ -15,7 +15,7 @@ class Client
   SENDER = ''
   AVATAR = ''
   
-  def initialize( auth_token: nil, sender: SENDER, avatar: AVATAR )
+  def initialize( auth_token: nil, sender: nil, avatar: nil )
 
     auth_token ||= TOKEN
     sender     ||= SENDER
