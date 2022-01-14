@@ -1,6 +1,7 @@
 require_relative 'ruby-vibe/client'
 require_relative 'ruby-vibe/url'
 require_relative 'ruby-vibe/version'
+require_relative 'ruby-vibe/action'
 
 # NOT READY TO USE - COMMENTS ARE TO NOT FORGET WHAT I DID
 
@@ -10,7 +11,10 @@ require_relative 'ruby-vibe/version'
 
 class RubyVibe < Client
 
+  include ACTION
+
   TOKEN, NAME, AVATAR = '', '', '' 
+
 
   def initialize( auth_token = TOKEN, name = NAME, avatar = AVATAR )
     super(auth_token, name, avatar)
