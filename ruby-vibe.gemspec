@@ -16,7 +16,7 @@ Gem::Specification.new do |spec|
     lib/ruby-vibe.rb
     lib/ruby-vibe/version.rb
     lib/ruby-vibe/url.rb
-    lib/ruby-vibe/action.rb
+    lib/ruby-vibe/bot.rb
   ]
 
   spec.bindir = ['bin']

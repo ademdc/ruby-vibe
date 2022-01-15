@@ -1,4 +1,4 @@
-class RubyVibe
+module RubyVibe
 
   VERSION = '1.0.1'.freeze
 

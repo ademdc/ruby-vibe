@@ -2,24 +2,12 @@ require 'rest-client'
 require 'json'
 
 
-# This is main client, that you'll probably never use directly.
-# Saves token, name, avatar and response as Instance Variables.
-# Check that token and sender are strings
-# Check if avatar use SSL connection
-
-class Client
+class RubyVibe::Client
 
   attr_accessor :token, :sender, :avatar, :response
 
-  TOKEN  = ''
-  SENDER = ''
-  AVATAR = ''
   
   def initialize( auth_token: nil, sender: nil, avatar: nil )
-
-    auth_token ||= TOKEN
-    sender     ||= SENDER
-    avatar     ||= AVATAR
 
     raise 'Token must be string!' unless auth_token.is_a? String
     raise 'Sender name must be string' unless sender.is_a? String
@@ -30,10 +18,7 @@ class Client
 
     @token, @sender, @avatar = auth_token, sender, avatar
   end
-  def viberize( call_action, opts = {} )
-    payload = load_payload(opts)
-    action(call_action, payload: payload)
-  end
+
 
   private
 
@@ -58,7 +43,10 @@ class Client
   end
 
 
-
+  def viberize( call_action, opts = {} )
+    payload = load_payload(opts)
+    action(call_action, payload: payload)
+  end
 
 
   def load_payload( opts = {} )
