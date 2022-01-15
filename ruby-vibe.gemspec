@@ -12,8 +12,8 @@ Gem::Specification.new do |spec|
   spec.require_paths = ['lib']
   
   spec.files         =  %w[
-    lib/ruby-vibe.rb
     lib/ruby-vibe/client.rb
+    lib/ruby-vibe.rb
     lib/ruby-vibe/version.rb
     lib/ruby-vibe/url.rb
     lib/ruby-vibe/action.rb

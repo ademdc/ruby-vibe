@@ -9,43 +9,44 @@ require_relative 'ruby-vibe/action'
 # Prepare new connection, type-checks are defined in client.rb
 # 'viberize' is also defined in client.rb, as private class
 
-class RubyVibe < Client
+class RubyVibe
 
   include ACTION
 
+  attr_reader :response
 
-  def initialize( auth_token: nil, sender: nil, avatar = nil )
-    super(auth_token: auth_token, sender: sender, avatar: avatar)
+  def initialize( auth_token: nil, sender: nil, avatar: nil )
+    @client = Client.new(auth_token: auth_token, sender: sender, avatar: avatar)
   end
 
 
   def send_message( opts = {} )
-    viberize(URL::SEND_MESSAGE, opts)
+    @client.viberize(URL::SEND_MESSAGE, opts)
   end
 
 
   def broadcast_message( opts = {} )
-    viberize(URL::BROADCAST_MESSAGE, opts)
+    @client.viberize(URL::BROADCAST_MESSAGE, opts)
   end
 
 
   def get_account_data
-    viberize(URL::GET_ACCOUNT_INFO, info: true)
+    @client.viberize(URL::GET_ACCOUNT_INFO, info: true)
   end
 
 
   def set_webhook( opts = {} )
-    viberize(URL::SET_WEBHOOK, opts)
+    @client.viberize(URL::SET_WEBHOOK, opts)
   end
 
 
   def get_user_details(user_id)
-    viberize(URL::GET_USER_DETAILS, id: user_id, info: true)
+    @client.viberize(URL::GET_USER_DETAILS, id: user_id, info: true)
   end
 
 
   def get_online(*user_ids)
-    viberize(URL::GET_ONLINE, ids: Array(user_ids), info: true)
+    @client.viberize(URL::GET_ONLINE, ids: Array(user_ids), info: true)
   end
 
 end

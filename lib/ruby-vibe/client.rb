@@ -30,7 +30,10 @@ class Client
 
     @token, @sender, @avatar = auth_token, sender, avatar
   end
-
+  def viberize( call_action, opts = {} )
+    payload = load_payload(opts)
+    action(call_action, payload: payload)
+  end
 
   private
 
@@ -55,10 +58,7 @@ class Client
   end
 
 
-  def viberize( call_action, opts = {} )
-    payload = load_payload(opts)
-    action(call_action, payload: payload)
-  end
+
 
 
   def load_payload( opts = {} )
