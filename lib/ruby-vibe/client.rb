@@ -51,9 +51,9 @@ class RubyVibe::Client
 
   def load_payload( opts = {} )
 
-    @payload_defaults = {}
+    payload_defaults = {}
 
-    @payload_defaults[:sender] = {
+    payload_defaults[:sender] = {
       name: opts[:sender_name] || @sender,
       avatar: opts[:sender_avatar] || @avatar
     } if opts[:info].nil?
@@ -61,10 +61,9 @@ class RubyVibe::Client
     opts.map do |key, value|
       next if key == :keyboard and value.nil?
       next if key == :rich_media and value.nil?
-      @payload_defaults.merge!(key: value)
+      payload_defaults[key] = value
     end
-
-    return @payload_defaults
+    return payload_defaults
   end
 
 
