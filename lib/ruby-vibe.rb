@@ -13,7 +13,6 @@ class RubyVibe
 
   include ACTION
 
-  attr_reader :response
 
   def initialize( auth_token: nil, sender: nil, avatar: nil )
     @client = Client.new(auth_token: auth_token, sender: sender, avatar: avatar)
