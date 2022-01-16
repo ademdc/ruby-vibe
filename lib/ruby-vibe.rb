@@ -1,49 +1,29 @@
 require_relative 'ruby-vibe/url'
 require_relative 'ruby-vibe/bot'
+require_relative 'ruby-vibe/shortcuts'
 require_relative 'ruby-vibe/version'
 
+##
+# RubyVibe represent a main module for Viber Bot.  
+# Multiple classes are used as shortcut classes,
+# calling methods from RubyVibe::Bot class.
+# Actual request to viber api is done by RubyVibe::Client class.
+# Urls for viber API are defined in URL module.
+#
+#   @see RubyVibe::Bot
+#   @see RubyVibe::Client
+#   @see shortcuts.rb
+#
 module RubyVibe
 
-  class Send_Message < Bot
-    def self.[]( opts = {} )
-      new.send_message(opts)
-    end
-  end
+  # viber api auth_token to be used if not given by user
+  TOKEN  = ''
 
+  # sender_name to be used if not given by user
+  NAME   = ''
 
-  class Broadcast_Message < Bot
-    def self.[]( opts = {} )
-      new.broadcast_message(opts)
-    end
-  end
-
-
-  class Get_Account_Data < Bot
-    def self.[]( user_id )
-      new.get_account_data(user_id)
-    end
-  end
-
-
-  class Get_User_Detils < Bot
-    def self.[]( user_id )
-      new.get_user_details(user_id)
-    end
-  end
-
-
-  class Set_Webhook < Bot
-    def self.[]( opts = {} )
-      new.set_webhook(opts)
-    end
-  end
-
-
-  class Get_Online < Bot
-    def self.[]( *user_ids )
-      new.get_online(user_ids)
-    end
-  end
+  # avatar url to be used if not given by user (require https)
+  AVATAR = ''
 
 end
 

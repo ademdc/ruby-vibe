@@ -1,26 +1,58 @@
 require_relative 'client'
 
+# Set of predefined viber api requests. This class is used directly by user.
+#
+# @example
+#
+#  @bot = RubyVibe::Bot.new(  token: 'my_viber_api_token',
+#                              name: 'sender_name',
+#                            avatar: 'avatar_url'
+#                          )
+#
 class RubyVibe::Bot < RubyVibe::Client
 
-  TOKEN  = ''
-  SENDER = ''
-  AVATAR = ''
 
-  def initialize( auth_token: nil, sender: nil, avatar: nil )
+  def initialize( token: nil, name: nil, avatar: nil )
 
-    auth_token ||= TOKEN
-    sender     ||= SENDER
-    avatar     ||= AVATAR
+    token  ||= RubyVibe::TOKEN
+    name   ||= RubyVibe::NAME
+    avatar ||= RubyVibe::AVATAR
 
-    super(auth_token: auth_token, sender: sender, avatar: avatar)
+    super(token: token, name: name, avatar: avatar)
   end
 
-
+  ##
+  # Send message to user.
+  #
+  #  @param [Hash] opts
+  #
+  #  @option opts [String] message     **Required**. Message text
+  #  @option opts [String] to          **Required**. Message receiver
+  #  @option opts [String] sender_name **Optional**. Sender name || RubyVibe::NAME
+  #  @option opts [String] avatar      **Optional**. Avatar url  || RubyVibe::AVATAR
+  #  @option opts [String] keyboard    **Optional**. Add keyboard to message
+  #  @option opts [String] rich_media  **Optional**. Send rich_media message
+  #
+  #  @return [Hash] response Response hash defined in RubyVibe::Client
+  #
   def send_message( opts = {} )
-    viberize(URL::SEND_MESSAGE, opts)
+    viberize(URL::MESSAGE, opts)
   end
 
-
+  ##
+  # Broadcast message to multiple users.
+  #
+  #  @param [Hash] opts
+  #
+  #  @option opts [String] message     **Required**. Message text
+  #  @option opts [Array]  to          **Required**. Message receiver
+  #  @option opts [String] sender_name **Optional**. Sender name || RubyVibe::NAME
+  #  @option opts [String] avatar      **Optional**. Avatar url  || RubyVibe::AVATAR
+  #  @option opts [String] keyboard    **Optional**. Add keyboard to message
+  #  @option opts [String] rich_media  **Optional**. Send rich_media message
+  #
+  #  @return [Hash] response Response hash defined in RubyVibe::Client
+  #
   def broadcast_message( opts = {} )
     viberize(URL::BROADCAST_MESSAGE, opts)
   end

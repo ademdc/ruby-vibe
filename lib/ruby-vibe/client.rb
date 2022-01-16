@@ -1,22 +1,30 @@
 require 'rest-client'
 require 'json'
 
-
+##
+# This class is almost never used directly by user.
+# Send actual request to viber api
+# Type-validation for token, name and avatar
+#
 class RubyVibe::Client
 
-  attr_accessor :token, :sender, :avatar, :response
+  attr_accessor :token, :name, :avatar
+
+  attr_reader :response, :payload_options
+
+  alias :sender :name
 
   
-  def initialize( auth_token: nil, sender: nil, avatar: nil )
+  def initialize( token: nil, name: nil, avatar: nil )
 
-    raise 'Token must be string!' unless auth_token.is_a? String
-    raise 'Sender name must be string' unless sender.is_a? String
+    raise 'Token must be string!' unless token.is_a? String
+    raise 'Sender name must be string' unless name.is_a? String
 
     unless avatar.empty?
       raise 'Avatar URL must use SSL' unless avatar.start_with? 'https://'
     end
 
-    @token, @sender, @avatar = auth_token, sender, avatar
+    @token, @name, @avatar = token, name, avatar
   end
 
 
@@ -51,19 +59,19 @@ class RubyVibe::Client
 
   def load_payload( opts = {} )
 
-    payload_defaults = {}
+    @payload_options = {}
 
-    payload_defaults[:sender] = {
-      name: opts[:sender_name] || @sender,
+    @payload_options[:sender] = {
+      name: opts[:sender_name] || @name,
       avatar: opts[:sender_avatar] || @avatar
     } if opts[:info].nil?
 
     opts.map do |key, value|
-      next if key == :keyboard and value.nil?
-      next if key == :rich_media and value.nil?
-      payload_defaults[key] = value
+      next if value.nil?
+      next if key == :info
+      @payload_options[key] = value
     end
-    return payload_defaults
+    return @payload_options
   end
 
 
