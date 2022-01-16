@@ -1,17 +1,30 @@
 require_relative 'client'
 
+##
 # Set of predefined viber api requests. This class is used directly by user.
+# Define constants for configuration settings, or add them on initialization.
 #
-# @example
+# @example Set default configuration
 #
-#  @bot = RubyVibe::Bot.new(  token: 'my_viber_api_token',
-#                              name: 'sender_name',
-#                            avatar: 'avatar_url'
-#                          )
+#   RubyVibe::TOKEN  = 'my_viber_auth_token'
+#   RubyVibe::NAME   = 'my_viber_nickname'
+#   RubyVibe::AVATAR = 'avatar_url'
 #
 class RubyVibe::Bot < RubyVibe::Client
 
-
+  ##
+  # @example Initialize new bot with user-defined configuration
+  #
+  #   @bot = RubyVibe::Bot.new( token:  'auth_token',
+  #                             name:   'sender_name',
+  #                             avatar: 'https_avatar_url )
+  #
+  # @param [String] token   **Optional**.  Auth token provided by Viber.
+  # @param [String] name    **Optional**.  Sender name provided by user.
+  # @param [String] avatar  **Optional**.  SSL link to user photo.
+  #
+  # @return [Hash] bot Return bot object
+  #
   def initialize( token: nil, name: nil, avatar: nil )
 
     token  ||= RubyVibe::TOKEN
@@ -27,7 +40,7 @@ class RubyVibe::Bot < RubyVibe::Client
   #  @param [Hash] opts
   #
   #  @option opts [String] message     **Required**. Message text
-  #  @option opts [String] to          **Required**. Message receiver
+  #  @option opts [String] receiver    **Required**. Message receiver
   #  @option opts [String] sender_name **Optional**. Sender name || RubyVibe::NAME
   #  @option opts [String] avatar      **Optional**. Avatar url  || RubyVibe::AVATAR
   #  @option opts [String] keyboard    **Optional**. Add keyboard to message
@@ -42,10 +55,10 @@ class RubyVibe::Bot < RubyVibe::Client
   ##
   # Broadcast message to multiple users.
   #
-  #  @param [Hash] opts
+  #  @param [Hash] opts Viber API options for broadcast_message request
   #
   #  @option opts [String] message     **Required**. Message text
-  #  @option opts [Array]  to          **Required**. Message receiver
+  #  @option opts [Array]  receivers   **Required**. Message receivers
   #  @option opts [String] sender_name **Optional**. Sender name || RubyVibe::NAME
   #  @option opts [String] avatar      **Optional**. Avatar url  || RubyVibe::AVATAR
   #  @option opts [String] keyboard    **Optional**. Add keyboard to message

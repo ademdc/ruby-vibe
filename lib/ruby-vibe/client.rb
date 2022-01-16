@@ -2,19 +2,34 @@ require 'rest-client'
 require 'json'
 
 ##
-# This class is almost never used directly by user.
-# Send actual request to viber api
-# Type-validation for token, name and avatar
+# This class is almost never used directly by user.  
+# Send actual request to viber api and perform type validation
+# for token, name and avatar (must be strings).
 #
 class RubyVibe::Client
 
+  # save viber-api configuration data
   attr_accessor :token, :name, :avatar
 
+  # save response hash, and payload for debugging
   attr_reader :response, :payload_options
 
+  # will be removed
   alias :sender :name
 
-  
+  ##
+  # @example Initialize new client
+  #
+  #   @client = Client.new(token: 'token', name: 'name', avatar: 'https_url')
+  #
+  # @param [String] token  **Required**. Viber auth token.
+  # @param [String] name   **Required**. Sender name.
+  # @param [String] avatar **Optional**. Avatar url.
+  #
+  # @raise [Token must be string] Token must be string.
+  # @raise [Name must be string] Name must be string.
+  # @raise [Avatar must use SSL] If defined, avatar must use https connection.
+  #
   def initialize( token: nil, name: nil, avatar: nil )
 
     raise 'Token must be string!' unless token.is_a? String
@@ -62,7 +77,7 @@ class RubyVibe::Client
     @payload_options = {}
 
     @payload_options[:sender] = {
-      name: opts[:sender_name] || @name,
+      sender_name: opts[:sender_name] || @name,
       avatar: opts[:sender_avatar] || @avatar
     } if opts[:info].nil?
 

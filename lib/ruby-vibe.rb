@@ -6,12 +6,13 @@ require_relative 'ruby-vibe/version'
 ##
 # RubyVibe represent a main module for Viber Bot.  
 # Multiple classes are used as shortcut classes,
-# calling methods from RubyVibe::Bot class.
+#  calling methods from RubyVibe::Bot class.
 # Actual request to viber api is done by RubyVibe::Client class.
 # Urls for viber API are defined in URL module.
 #
 #   @see RubyVibe::Bot
 #   @see RubyVibe::Client
+#   @see URL
 #   @see shortcuts.rb
 #
 module RubyVibe
