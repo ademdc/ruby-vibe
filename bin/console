@@ -1,10 +1,8 @@
 #!/usr/bin/env ruby
+# frozen_string_literal: true
 
 require 'bundler/setup'
-require './lib/ruby-vibe'
+require 'pry'
+require_relative '../lib/ruby_vibe'
 
-# require "pry"
-# Pry.start
-
-require 'irb'
-IRB.start(__FILE__)
+Pry.start

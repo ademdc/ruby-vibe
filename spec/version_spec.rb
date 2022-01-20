@@ -1,4 +1,6 @@
-require 'spec_helper'
+# frozen_string_literal: true
+
+require_relative './spec_helper'
 
 RSpec.describe RubyVibe do
   it 'has a version number' do

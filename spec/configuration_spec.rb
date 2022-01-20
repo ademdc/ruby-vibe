@@ -1,22 +1,27 @@
-require 'spec_helper'
+# frozen_string_literal: true
 
-RSpec.describe RubyVibe::Configuration do
+require_relative './spec_helper'
+
+RSpec.describe RubyVibe do
   let(:token) { '123456789' }
   let(:sender_name) { 'Sender' }
-  let(:sender_avatar) { 'http://avatar.com/avatar.jpg' }
+  let(:sender_avatar) { 'https://avatar.com/avatar.jpg' }
 
   it 'has auth token configured before initialisation' do
-    RubyVibe.configure { |config| config.auth_token = token }
-    expect(RubyVibe.config.auth_token).not_to be nil
+    RubyVibe::TOKEN = token
+    bot = RubyVibe::Bot.new
+    expect(bot.token).not_to be nil
   end
 
   it 'has sender_name configured before initialisation' do
-    RubyVibe.configure { |config| config.sender_name = sender_name }
-    expect(RubyVibe.config.sender_name).not_to be nil
+    RubyVibe::NAME = sender_name
+    bot = RubyVibe::Bot.new
+    expect(bot.name).not_to be nil
   end
 
-  it 'has auth token configured before initialisation' do
-    RubyVibe.configure { |config| config.sender_avatar = sender_avatar }
-    expect(RubyVibe.config.sender_avatar).not_to be nil
+  it 'has avatar configured before initialisation' do
+    RubyVibe::AVATAR = sender_avatar
+    bot = RubyVibe::Bot.new
+    expect(bot.avatar).not_to be nil
   end
 end
