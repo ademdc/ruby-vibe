@@ -1,0 +1,6 @@
+lib/ruby_vibe.rb b4936d3f1b3ce1d084a70225069360a0a3ec92aa
+lib/ruby-vibe/bot.rb 5764f75f53f851f9655df28d7ae8a53cf0d3a3f7
+lib/ruby-vibe/url.rb 8cae962f38c219d257376a78f0aef32f0da731d3
+lib/ruby-vibe/client.rb f6ec33bf9a38f8a74df7aac574fc97bff5da906f
+lib/ruby-vibe/version.rb 917e911a5b8b4e86849a335f9286c9b8955efc51
+lib/ruby-vibe/shortcuts.rb c138018a592afb3af288e219313cb49c521c1fcb
