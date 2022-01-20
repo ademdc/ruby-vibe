@@ -3,12 +3,12 @@
 require 'rest-client'
 require 'json'
 
-##
-# This class is almost never used directly by user.
-# Send actual request to viber api and perform type validation
-# for token, name and avatar (must be strings).
-#
 module RubyVibe
+  ##
+  # This class is almost never used directly by user.
+  # Send actual request to viber api and perform type validation
+  # for token, name and avatar (must be strings).
+  #
   class Client
     attr_accessor :token, :name, :avatar
 

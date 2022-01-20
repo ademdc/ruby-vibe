@@ -2,16 +2,16 @@
 
 require_relative 'client'
 
-##
-# Set of predefined viber api requests. This class is used directly by user.
-# Define constants for configuration settings, or add them on initialization.
-#
-# @example Set default configuration
-#   RubyVibe::TOKEN  = 'my_viber_auth_token'
-#   RubyVibe::NAME   = 'my_viber_nickname'
-#   RubyVibe::AVATAR = 'avatar_url'
-#
 module RubyVibe
+  ##
+  # Set of predefined viber api requests. This class is used directly by user.
+  # Define constants for configuration settings, or add them on initialization.
+  #
+  # @example Set default configuration
+  #   RubyVibe::TOKEN  = 'my_viber_auth_token'
+  #   RubyVibe::NAME   = 'my_viber_nickname'
+  #   RubyVibe::AVATAR = 'avatar_url'
+  #
   class Bot < RubyVibe::Client
     ##
     # @example Initialize new bot with user-defined configuration

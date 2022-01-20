@@ -58,10 +58,6 @@
       </div>
 
       <div id="content"><div id='filecontents'>
-<h1 id="label-This+is+development+branch">This is development branch</h1>
-
-<p>Please go to <a href="https://github.com/ademdc/ruby-vibe<br>“>github.com/ademdc/ruby-vibe<br></a> This branch is under active development, not ready to use!</p>
-
 <h1 id="label-ruby-vibe">ruby-vibe</h1>
 
 <p>Ruby client for Viber REST API</p>
@@ -70,7 +66,7 @@
 
 <p>Add this line to your application&#39;s Gemfile:</p>
 
-<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_gem'>gem</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>ruby-vibe</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>1.0.1</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='label'>require:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>ruby-vibe</span><span class='tstring_end'>&#39;</span></span>
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_gem'>gem</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>ruby-vibe</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>2.0.0</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='label'>require:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>ruby-vibe</span><span class='tstring_end'>&#39;</span></span>
 </code></pre>
 
 <p>…followed with:</p>
@@ -85,70 +81,39 @@
 
 <h2 id="label-Usage">Usage</h2>
 
-<pre class="code ruby"><code class="ruby">viber = RubyVibe.new(auth_token: &lt;YOUR_AUTH_TOKEN&gt;)
+<pre class="code ruby"><code class="ruby">viber = RubyVibe::Bot.new(token: &lt;YOUR_AUTH_TOKEN&gt;)
 </code></pre>
 
 <p>Also, it is possible to add a <code>ruby-vibe.rb</code> file in in the initializers folder with the following content:</p>
 
-<pre class="code ruby"><code class="ruby">RubyVibe.configure do |config|
-  config.auth_token    = &lt;YOUR_AUTH_TOKEN&gt;
-  config.sender_name   = &#39;RubyVibe&#39;
-  config.sender_avatar = &#39;http://avatar.example.com&#39; 
-end
+<pre class="code ruby"><code class="ruby">RubyVibe::TOKEN = &lt;YOUR_AUTH_TOKEN&gt;
+RubyVibe::NAME = &lt;YOUR_SENDER_NAME&gt;
+RubyVibe::AVATAR = &lt;AVATAR_HTTPS_URL&gt;
 </code></pre>
 
 <p>In this case the client can be initialized without any params: <code>viber = RubyVibe.new</code></p>
 
 <h3 id="label-Get+account+data">Get account data</h3>
 
-<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_viber'>viber</span><span class='period'>.</span><span class='id identifier rubyid_get_account_data'>get_account_data</span>
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_viber'>viber</span><span class='period'>.</span><span class='id identifier rubyid_send_message'>send_message</span><span class='lparen'>(</span><span class='label'>message:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>hello viber from ruby!</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='label'>receiver:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>someone</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
 </code></pre>
 
 <h3 id="label-Response">Response</h3>
 
-<p>The reponse of each method is a <code>Struct</code> with three keys: <code>success?</code>, <code>hash</code> and <code>error_message</code>. \</p>
+<p><em>:hash changed to :data to make rubocop happy</em></p>
+
+<p>The reponse of each method is a <code>Struct</code> with three keys: <code>success?</code>, <code>data</code> and <code>error_message</code>. \</p>
 
 <p>For a send message request the response could look like this:</p>
 
-<pre class="code ruby"><code class="ruby"><span class='comment'>#&lt;struct :success?=true, hash={&quot;status&quot;=&gt;0, &quot;status_message&quot;=&gt;&quot;ok&quot;, &quot;message_token&quot;=&gt;5595771666503728439, &quot;chat_hostname&quot;=&gt;&quot;SN-CHAT-16_&quot;}, error_message=nil&gt;
+<pre class="code ruby"><code class="ruby"><span class='comment'>#&lt;struct :success?=true, data={&quot;status&quot;=&gt;0, &quot;status_message&quot;=&gt;&quot;ok&quot;, &quot;message_token&quot;=&gt;5595771666503728439, &quot;chat_hostname&quot;=&gt;&quot;SN-CHAT-16_&quot;}, error_message=nil&gt;
 </span></code></pre>
-
-<h3 id="label-Set+a+webhook">Set a webhook</h3>
-
-<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_viber'>viber</span><span class='period'>.</span><span class='id identifier rubyid_set_webhook'>set_webhook</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>your_site/api/webhook</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='label'>events:</span> <span class='lbracket'>[</span><span class='rbracket'>]</span><span class='rparen'>)</span>
-</code></pre>
-
-<p>See list of possible events on: <code>https://developers.viber.com/docs/api/rest-bot-api/#post-data</code></p>
-
-<h3 id="label-Send+a+message">Send a message</h3>
-
-<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_viber'>viber</span><span class='period'>.</span><span class='id identifier rubyid_send_message'>send_message</span><span class='lparen'>(</span><span class='label'>receiver:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>&lt;RECEIVER_ID&gt;</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='label'>text:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>Hello from RubyVibe!</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='label'>sender_name:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>Sender</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='label'>sender_avatar:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>http://avatar.example.com</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='label'>tracking_data:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>tracking data</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
-</code></pre>
-
-<p>Add a <code>keyboard</code> parameter to the call to send predefined text keyboard to the user. More about it on <code>https://developers.viber.com/docs/tools/keyboards/</code></p>
-
-<h3 id="label-Broadcast+a+message">Broadcast a message</h3>
-
-<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_viber'>viber</span><span class='period'>.</span><span class='id identifier rubyid_broadcast_message'>broadcast_message</span><span class='lparen'>(</span><span class='label'>broadcast_list:</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>&lt;USER_ID&gt;</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='label'>text:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>Hi from RubyVibe!</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='label'>sender_name:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>RubyVibe</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='label'>sender_avatar:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>http://avatar.example.com</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='label'>type:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>text</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
-</code></pre>
-
-<h3 id="label-Get+user+details">Get user details</h3>
-
-<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_viber'>viber</span><span class='period'>.</span><span class='id identifier rubyid_get_user_details'>get_user_details</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>&lt;USER_ID&gt;</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
-</code></pre>
-
-<h3 id="label-Get+last+online+status">Get last online status</h3>
-
-<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_viber'>viber</span><span class='period'>.</span><span class='id identifier rubyid_get_online'>get_online</span><span class='lparen'>(</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>USER_ID</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>ANOTHER_USER_ID</span><span class='tstring_end'>&#39;</span></span> <span class='rparen'>)</span>
-<span class='comment'># or
-</span><span class='id identifier rubyid_viber'>viber</span><span class='period'>.</span><span class='id identifier rubyid_get_online'>get_online</span><span class='lparen'>(</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>&lt;USER_ID&gt;</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>&lt;ANOTHER_USER_ID&gt;</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span><span class='rparen'>)</span>
-</code></pre>
 
 <h2 id="label-Thank+you+for+using+RubyVibe-21">Thank you for using RubyVibe!</h2>
 </div></div>
 
       <div id="footer">
-  Generated on Thu Jan 20 22:44:57 2022 by
+  Generated on Thu Jan 20 23:13:16 2022 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.27 (ruby-3.0.3).
 </div>
