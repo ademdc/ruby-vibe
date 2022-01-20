@@ -32,7 +32,7 @@ RubyVibe::NAME = <YOUR_SENDER_NAME>
 RubyVibe::AVATAR = <AVATAR_HTTPS_URL>
 ```
 
-In this case the client can be initialized without any params: `viber = RubyVibe.new`
+In this case the client can be initialized without any params: `viber = RubyVibe::Bot.new`
 
 ### Get account data
 ```ruby
