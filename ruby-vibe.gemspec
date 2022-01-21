@@ -17,6 +17,7 @@ Gem::Specification.new do |spec|
     lib/ruby-vibe/bot.rb
     lib/ruby-vibe/client.rb
     lib/ruby-vibe/url.rb
+    lib/ruby-vibe/shortcuts.rb
     lib/ruby-vibe/version.rb
   ]
 
