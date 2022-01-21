@@ -1,12 +1,32 @@
 # ruby-vibe
 Ruby client for Viber REST API
 
+# NOTE
+This is development branch, awaiting pull request. Gem 2.0 is not released jet,
+so `gem install ruby-vibe` will install version 1.
+
 
 ## Installation
-Add this line to your application's Gemfile:
+Install from source:
+
+```bash
+git clone https://www.github.com/ademdc/ruby-vibe.git \
+&& cd ruby-vibe \
+&& bundle install
+```
+
+To build gem and install it locally:
+
+```bash
+# clone repo from previous step
+rake build
+gem install pkg/ruby-vibe-2.0.0.gem
+```
+
+From Gemfile:
 
 ```ruby
-gem 'ruby-vibe', '2.0.0', require: 'ruby-vibe'
+gem 'ruby-vibe', git: 'https://www.github.com/alx3dev/ruby-vibe'
 ```
 
 ...followed with:
@@ -14,10 +34,6 @@ gem 'ruby-vibe', '2.0.0', require: 'ruby-vibe'
 bundle install
 ```
 
-Or install it with:
-```bash
-gem install ruby-vibe
-```
 
 ## Usage
  >Run `yard` to generate documentation.  
