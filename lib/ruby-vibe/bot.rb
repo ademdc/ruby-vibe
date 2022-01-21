@@ -35,6 +35,7 @@ module RubyVibe
 
     ##
     # Send message to user.
+    # @see https://developers.viber.com/docs/api/rest-bot-api/#send-message
     #
     # @param [Hash] opts
     #
@@ -48,11 +49,12 @@ module RubyVibe
     # @return [Hash] Response hash defined in RubyVibe::Client
     #
     def send_message(opts = {})
-      viberize(URL::MESSAGE, opts)
+      viberize(URL::SEND_MESSAGE, opts)
     end
 
     ##
     # Broadcast message to multiple users.
+    # @see https://developers.viber.com/docs/api/rest-bot-api/#broadcast-message
     #
     # @param [Hash] opts Viber API options for broadcast_message request
     #
@@ -64,24 +66,35 @@ module RubyVibe
     # @option opts [String] rich_media  **Optional**. Send rich_media message
     #
     # @return [Hash] Response hash defined in RubyVibe::Client
-    # @see Client#response
     #
     def broadcast_message(opts = {})
       viberize(URL::BROADCAST_MESSAGE, opts)
     end
 
-    def get_account_data
-      viberize(URL::GET_ACCOUNT_INFO, info: true)
-    end
-
+    ##
+    # @see https://developers.viber.com/docs/api/rest-bot-api/#set-webhook
+    #
     def set_webhook(opts = {})
       viberize(URL::SET_WEBHOOK, opts)
     end
 
+    ##
+    # @see https://developers.viber.com/docs/api/rest-bot-api/#get-account-info
+    #
+    def get_account_info
+      viberize(URL::GET_ACCOUNT_INFO, info: true)
+    end
+
+    ##
+    # @see https://developers.viber.com/docs/api/rest-bot-api/#get-user-details
+    #
     def get_user_details(user_id)
       viberize(URL::GET_USER_DETAILS, id: user_id, info: true)
     end
 
+    ##
+    # @see https://developers.viber.com/docs/api/rest-bot-api/#get-online
+    #
     def get_online(*user_ids)
       viberize(URL::GET_ONLINE, ids: Array(user_ids), info: true)
     end

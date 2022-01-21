@@ -1,38 +1,17 @@
-# Update January 11, 2021 - 11:40
-==================================
+# Pull Request for Version 2 by Alx3Dev
 
-**Developer(s): Alx3Dev**
+Required Ruby Version is now 3.0.1.
 
-Info:
+Code is completely rewritten while keeping the same logic, and same method to execute request to viber api.
 
- - Refactored source code with breaking changes
- - User commands are still same (or almost same)
- - Now we have `client.rb` class that run connection to viber api
- - And `ruby-vibe.rb` that send commands to viber over `client.rb`
- - NOT-TESTED !
- - TO-DO: Tests and Documentation
+Source code is documented 100%, including private methods
 
+RubyVibe is now module, not a class.
 
+RubyVibe::Client -> Send request to viber api (used by ::Bot)
 
-# Update January 10, 2021 - 16:51
-==================================
+RubyVibe::Bot -> Extend client, and add predefined viber api methods (used by developer)
 
-**Developer(s): Alx3Dev**
+shortcut.rb -> Allow to use class as shortcut for method request
+ -> RubyVibe::SendMessage[message: 'text']
 
-Info: 
-
- - Simplified few things about `self`
- - get_online(*ids) for online users accept multiple arguments too, not only `Array`.
-
-Changes:
-
- 1 - configuration.rb
-   - def self.configure moved to already self extended class
-
- 2 - info.rb
-   - def get_online(ids=[]) changed to -> get_online(*ids) with ids = Array(ids) to not break anything
-   - now arguments can be added in both ways
-   - get_online([user_id_1, user_id_2]) or get_online(user_id_1, user_id_2)
-
- 3 - response.rb
-   - changed to def self.parse instead of extending self, and simplified new(response).parse

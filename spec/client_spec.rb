@@ -16,11 +16,11 @@ RSpec.describe RubyVibe::Client do
   it 'shows error message for wrong token' do
     viber = RubyVibe::Bot.new(token: token)
 
-    expect(viber.get_account_data.success?).to be false
+    expect(viber.get_account_info.success?).to be false
   end
 
   it 'expects hash to exist in reponse' do
     viber = RubyVibe::Bot.new(token: token)
-    expect(viber.get_account_data.hash).to be_a Hash
+    expect(viber.get_account_info.data).to be_a Hash
   end
 end

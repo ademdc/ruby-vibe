@@ -44,14 +44,21 @@ module RubyVibe
 
     private
 
-    def action(url, payload: {}, http_method: :post)
+    ##
+    # Send payload to Viber API.
+    #
+    # @param [String] url **Required**. API url to send payload.
+    # @param [Hash] payload **Optional**. Payload to send with request.
+    # @return [Hash] Bot#response hash with all data.
+    #
+    def action(url, payload: {})
       headers = {
         'User-Agent': "RubyVibe client v#{RubyVibe::VERSION})",
         'X-Viber-Auth-Token': @token
       }
 
       response = ::RestClient::Request.execute(
-        method: http_method,
+        method: :post,
         url: url,
         payload: payload.to_json,
         headers: headers,
@@ -62,11 +69,27 @@ module RubyVibe
       @response = parse(response)
     end
 
-    def viberize(call_action, opts = {})
+    ##
+    # Method used by bot to construct viber api request.
+    # Prepare payload and send it to api url.
+    #
+    # @param [String] api_url **Required**. URL corresponding to method name.
+    # @param [Hash] opts **Optional**. Payload corresponding to method options.
+    #
+    def viberize(api_url, opts = {})
       payload = load_payload(opts)
-      action(call_action, payload: payload)
+      action(api_url, payload: payload)
     end
 
+    ##
+    # Construct payload to send with request.
+    # If payload contain `info: true`, do not add sender name and avatar url.
+    # Otherwise, add them together with _options hash_ to payload.
+    # Nil values are not imported.
+    #
+    # @param [Hash] opts **Optional**. Data to create payload.
+    # @return [Hash] Client#payload_hash to send with request.
+    #
     def load_payload(opts = {})
       @payload_hash = {}
 
@@ -86,6 +109,10 @@ module RubyVibe
       @payload_hash
     end
 
+    ##
+    # Construct response hash. Parse viber response and check status code.
+    # If code is not zero (**0**), add `error_message` to response.
+    #
     def parse(response)
       success = true
       error_message = nil

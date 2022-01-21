@@ -20,8 +20,12 @@ gem install ruby-vibe
 ```
 
 ## Usage
+ >Run `yard` to generate documentation.  
+
+To initialize new bot, call Bot with viber authentication token:
+
 ```ruby
-viber = RubyVibe::Bot.new(token: <YOUR_AUTH_TOKEN>)
+bot = RubyVibe::Bot.new(token: <YOUR_AUTH_TOKEN>)
 ```
 
 Also, it is possible to add a `ruby-vibe.rb` file in in the initializers folder with the following content:
@@ -32,15 +36,22 @@ RubyVibe::NAME = <YOUR_SENDER_NAME>
 RubyVibe::AVATAR = <AVATAR_HTTPS_URL>
 ```
 
-In this case the client can be initialized without any params: `viber = RubyVibe::Bot.new`
+In this case the bot can be initialized without any params: `bot = RubyVibe::Bot.new`
 
 ### Get account data
 ```ruby
-viber.send_message(message: 'hello viber from ruby!', receiver: 'someone')
+bot.send_message(message: 'hello viber from ruby!', receiver: 'someone')
+```
+If you configure token as constant `RubyVibe::TOKEN`, you can use class (shortcut) methods:
+
+```ruby
+RubyVibe::Message[message: 'my message', receiver: 'user_id']
+
+RubyVibe::GetOnline[user_id]
 ```
 
 ### Response
-_:hash changed to :data to make rubocop happy_  
+ >_:hash changed to :data to make rubocop happy_  
 
 The reponse of each method is a `Struct` with three keys: `success?`, `data` and `error_message`. \
 
@@ -49,6 +60,10 @@ For a send message request the response could look like this:
 ```ruby
 #<struct :success?=true, data={"status"=>0, "status_message"=>"ok", "message_token"=>5595771666503728439, "chat_hostname"=>"SN-CHAT-16_"}, error_message=nil> 
 ```
+
+### Tests
+ - Run `rspec` to execute all tests. Feel free to write new ones!
+ - Run `rubocop` to inspect code quality. `.rubocop_todo.yml` contain current issues that need to be solved in future.
 
 ## Thank you for using RubyVibe!
 

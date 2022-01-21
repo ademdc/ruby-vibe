@@ -3,6 +3,7 @@
 module RubyVibe
   ##
   # Shortcut to initialize Bot and send message.
+  # @see https://developers.viber.com/docs/api/rest-bot-api/#send-message
   #
   # @note Configuration constants must be defined to use this class.
   #
@@ -12,10 +13,10 @@ module RubyVibe
   #   RubyVibe::AVATAR = 'https_avatar_url'
   #
   # @example Send text message
-  #   msg = RubyVibe::Message[message: 'text', sender_name: 'my_nickname']
+  #   msg = RubyVibe::SendMessage[message: 'text', sender_name: 'my_nickname']
   #   pp msg.error_message unless msg.success?
   #
-  class Message
+  class SendMessage
     ##
     # Send message to user.
     #
@@ -30,6 +31,7 @@ module RubyVibe
 
   ##
   # Shortcut to initialize Bot and broadcast message.
+  # @see https://developers.viber.com/docs/api/rest-bot-api/#broadcast-message
   #
   # @note Configuration constants must be defined to use shortcut classes
   #
@@ -51,25 +53,41 @@ module RubyVibe
     end
   end
 
-  class GetAccountData
-    def self.[](user_id)
-      Bot.new.get_account_data(user_id)
-    end
-  end
-
-  class GetUserDetails
-    def self.[](user_id)
-      Bot.new.get_user_details(user_id)
-    end
-  end
-
+  ##
+  # @see https://developers.viber.com/docs/api/rest-bot-api/#set-webhook
+  #
   class SetWebhook
+    # @note Configuration constants must be defined to use shortcut classes
     def self.[](opts = {})
       Bot.new.set_webhook(opts)
     end
   end
 
+  ##
+  # @see https://developers.viber.com/docs/api/rest-bot-api/#get-account-info
+  #
+  class GetAccountInfo
+    # @note Configuration constants must be defined to use shortcut classes
+    def self.[](user_id)
+      Bot.new.get_account_info(user_id)
+    end
+  end
+
+  ##
+  # @see https://developers.viber.com/docs/api/rest-bot-api/#get-user-details
+  #
+  class GetUserDetails
+    # @note Configuration constants must be defined to use shortcut classes
+    def self.[](user_id)
+      Bot.new.get_user_details(user_id)
+    end
+  end
+
+  ##
+  # @see https://developers.viber.com/docs/api/rest-bot-api/#get-online
+  #
   class GetOnline
+    # @note Configuration constants must be defined to use shortcut classes
     def self.[](*user_ids)
       Bot.new.get_online(*user_ids)
     end
