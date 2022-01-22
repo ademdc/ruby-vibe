@@ -68,8 +68,8 @@ module RubyVibe
   #
   class GetAccountInfo
     # @note Configuration constants must be defined to use shortcut classes
-    def self.[](user_id)
-      Bot.new.get_account_info(user_id)
+    def self.[]
+      Bot.new.get_account_info
     end
   end
 
