@@ -1,3 +1,7 @@
 .byebug_history
 *.gem
 .rspec_status
+.lock
+.yardoc/
+pkg/
+doc/

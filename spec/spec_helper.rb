@@ -1,7 +1,7 @@
-require 'bundler/setup'
-require 'rspec'
+# frozen_string_literal: true
 
-require './lib/ruby-vibe'
+require 'rspec'
+require_relative '../lib/ruby_vibe'
 
 RSpec.configure do |config|
   config.example_status_persistence_file_path = '.rspec_status'

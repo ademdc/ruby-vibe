@@ -1,82 +1,85 @@
 # ruby-vibe
 Ruby client for Viber REST API
 
+# NOTE
+This is development branch, awaiting pull request. Gem 2.0 is not released jet,
+so `gem install ruby-vibe` will install version 1.
+
 
 ## Installation
-Add this line to your application's Gemfile:
+Install from source:
+
+```bash
+git clone https://www.github.com/ademdc/ruby-vibe.git \
+&& cd ruby-vibe \
+&& bundle install
+```
+
+To build gem and install it locally:
+
+```bash
+# clone repo from previous step
+rake build
+gem install pkg/ruby-vibe-2.0.0.gem
+```
+
+From Gemfile:
 
 ```ruby
-gem 'ruby-vibe', '1.0.1', require: 'ruby-vibe'
+gem 'ruby-vibe', git: 'https://www.github.com/alx3dev/ruby-vibe'
 ```
 
 ...followed with:
-```
+```bash
 bundle install
 ```
 
-Or install it with:
-```
-gem install ruby-vibe
-```
 
 ## Usage
-```
-viber = RubyVibe.new(auth_token: <YOUR_AUTH_TOKEN>)
+ >Run `yard` to generate documentation.  
+
+To initialize new bot, call Bot with viber authentication token:
+
+```ruby
+bot = RubyVibe::Bot.new(token: <YOUR_AUTH_TOKEN>)
 ```
 
 Also, it is possible to add a `ruby-vibe.rb` file in in the initializers folder with the following content:
 
-```
-RubyVibe.configure do |config|
-  config.auth_token    = <YOUR_AUTH_TOKEN>
-  config.sender_name   = 'RubyVibe'
-  config.sender_avatar = 'http://avatar.example.com' 
-end
+```ruby
+RubyVibe::TOKEN = <YOUR_AUTH_TOKEN>
+RubyVibe::NAME = <YOUR_SENDER_NAME>
+RubyVibe::AVATAR = <AVATAR_HTTPS_URL>
 ```
 
-In this case the client can be initialized without any params: `viber = RubyVibe.new`
+In this case the bot can be initialized without any params: `bot = RubyVibe::Bot.new`
 
 ### Get account data
+```ruby
+bot.send_message(message: 'hello viber from ruby!', receiver: 'someone')
 ```
-viber.get_account_data
+If you configure token as constant `RubyVibe::TOKEN`, you can use class (shortcut) methods:
+
+```ruby
+RubyVibe::Message[message: 'my message', receiver: 'user_id']
+
+RubyVibe::GetOnline[user_id]
 ```
 
 ### Response
-The reponse of each method is a `Struct` with three keys: `success?`, `hash` and `error_message`. \
+ >_:hash changed to :data to make rubocop happy_  
 
-For a send message request the response could look like this: 
+The reponse of each method is a `Struct` with three keys: `success?`, `data` and `error_message`. \
 
-```
-#<struct :success?=true, hash={"status"=>0, "status_message"=>"ok", "message_token"=>5595771666503728439, "chat_hostname"=>"SN-CHAT-16_"}, error_message=nil> 
-```
+For a send message request the response could look like this:  
 
-### Set a webhook
-```
-viber.set_webhook('your_site/api/webhook', events: [])
-```
-See list of possible events on: `https://developers.viber.com/docs/api/rest-bot-api/#post-data`
-
-### Send a message
-```
-viber.send_message(receiver: '<RECEIVER_ID>', text: 'Hello from RubyVibe!', sender_name: 'Sender', sender_avatar: 'http://avatar.example.com', tracking_data: 'tracking data')
+```ruby
+#<struct :success?=true, data={"status"=>0, "status_message"=>"ok", "message_token"=>5595771666503728439, "chat_hostname"=>"SN-CHAT-16_"}, error_message=nil> 
 ```
 
-Add a `keyboard` parameter to the call to send predefined text keyboard to the user. More about it on `https://developers.viber.com/docs/tools/keyboards/`
-
-### Broadcast a message
-```
-viber.broadcast_message(broadcast_list:['<USER_ID>'], text: 'Hi from RubyVibe!', sender_name: 'RubyVibe', sender_avatar: 'http://avatar.example.com', type: 'text')
-```
-
-### Get user details
-```
-viber.get_user_details('<USER_ID>')
-```
-
-### Get last online status
-```
-viber.get_online(['<USER_ID>', '<ANOTHER_USER_ID>])
-```
+### Tests
+ - Run `rspec` to execute all tests. Feel free to write new ones!
+ - Run `rubocop` to inspect code quality. `.rubocop_todo.yml` contain current issues that need to be solved in future.
 
 ## Thank you for using RubyVibe!
 
