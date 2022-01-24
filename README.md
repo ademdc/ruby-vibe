@@ -26,7 +26,7 @@ gem install pkg/ruby-vibe-2.0.0.gem
 From Gemfile:
 
 ```ruby
-gem 'ruby-vibe', git: 'https://www.github.com/alx3dev/ruby-vibe'
+gem 'ruby-vibe'
 ```
 
 ...followed with:
