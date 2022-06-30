@@ -13,5 +13,13 @@ RubyVibe::Client -> Send request to viber api (used by ::Bot)
 RubyVibe::Bot -> Extend client, and add predefined viber api methods (used by developer)
 
 shortcut.rb -> Allow to use class as shortcut for method request
- -> RubyVibe::SendMessage[message: 'text']
+ -> RubyVibe::SendMessage[text: 'text']
 
+
+# 30-06-2022
+
+Added default type to send_message and broadcast_message methods
+
+Fixed bug with sender name
+
+Bump version to 2.0.1

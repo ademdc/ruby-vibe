@@ -95,7 +95,7 @@ module RubyVibe
 
       if opts[:info].nil?
         @payload_hash[:sender] = {
-          sender_name: opts[:sender_name] || @name,
+          name: opts[:sender_name] || @name,
           avatar: opts[:sender_avatar] || @avatar
         }
       end

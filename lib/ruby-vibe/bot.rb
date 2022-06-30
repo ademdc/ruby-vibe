@@ -49,6 +49,8 @@ module RubyVibe
     # @return [Hash] Response hash defined in RubyVibe::Client
     #
     def send_message(opts = {})
+      opts.merge!(type: 'text') unless opts[:type]
+
       viberize(URL::SEND_MESSAGE, opts)
     end
 
@@ -68,6 +70,8 @@ module RubyVibe
     # @return [Hash] Response hash defined in RubyVibe::Client
     #
     def broadcast_message(opts = {})
+      opts.merge!(type: 'text') unless opts[:type]
+      
       viberize(URL::BROADCAST_MESSAGE, opts)
     end
 

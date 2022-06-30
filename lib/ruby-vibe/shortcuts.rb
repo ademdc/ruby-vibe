@@ -13,7 +13,7 @@ module RubyVibe
   #   RubyVibe::AVATAR = 'https_avatar_url'
   #
   # @example Send text message
-  #   msg = RubyVibe::SendMessage[message: 'text', sender_name: 'my_nickname']
+  #   msg = RubyVibe::SendMessage[text: 'text', sender_name: 'my_nickname']
   #   pp msg.error_message unless msg.success?
   #
   class SendMessage
@@ -43,7 +43,7 @@ module RubyVibe
   class BroadcastMessage
     ##
     # @example Broadcast message to multiple users
-    #   msg = RubyVibe::BroadcastMessage[message:   'text',
+    #   msg = RubyVibe::BroadcastMessage[text:   'text',
     #                                    receivers: %w[user_1 user_2]
     #                                    ]
     #   pp msg.error_message unless msg.success?

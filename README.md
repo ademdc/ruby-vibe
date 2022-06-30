@@ -54,16 +54,21 @@ RubyVibe::AVATAR = <AVATAR_HTTPS_URL>
 
 In this case the bot can be initialized without any params: `bot = RubyVibe::Bot.new`
 
-### Get account data
+### Send message
 ```ruby
-bot.send_message(message: 'hello viber from ruby!', receiver: 'someone')
+bot.send_message(text: 'hello viber from ruby!', receiver: 'someone')
 ```
 If you configure token as constant `RubyVibe::TOKEN`, you can use class (shortcut) methods:
 
 ```ruby
-RubyVibe::Message[message: 'my message', receiver: 'user_id']
+RubyVibe::Message[text: 'my message', receiver: 'user_id']
 
 RubyVibe::GetOnline[user_id]
+```
+
+### Get account info
+```ruby
+bot.get_account_info
 ```
 
 ### Response
