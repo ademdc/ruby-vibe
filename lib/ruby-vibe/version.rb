@@ -5,5 +5,5 @@
 #
 module RubyVibe
   # version number to change with new update
-  VERSION = '2.0.2'
+  VERSION = '2.0.3'
 end
