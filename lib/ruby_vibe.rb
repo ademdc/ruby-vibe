@@ -17,6 +17,7 @@ require_relative 'ruby-vibe/version'
 # @see URL
 # @see [File] lib/ruby-vibe/shortcuts.rb
 #
+
 module RubyVibe
   # viber api auth_token to be used if not given by user
   TOKEN  = ''
