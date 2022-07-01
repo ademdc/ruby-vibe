@@ -20,13 +20,13 @@ To build gem and install it locally:
 ```bash
 # clone repo from previous step
 rake build
-gem install pkg/ruby-vibe-2.0.0.gem
+gem install pkg/ruby-vibe-2.0.2.gem
 ```
 
 From Gemfile:
 
 ```ruby
-gem 'ruby-vibe'
+gem 'ruby-vibe', '2.0.2'
 ```
 
 ...followed with:
