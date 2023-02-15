@@ -1,11 +1,6 @@
 # ruby-vibe
 Ruby client for Viber REST API
 
-# NOTE
-This is development branch, awaiting pull request. Gem 2.0 is not released jet,
-so `gem install ruby-vibe` will install version 1.
-
-
 ## Installation
 Install from source:
 
